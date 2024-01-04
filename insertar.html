@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>INSERTAR PRODUCTOS</title>
+  </head>
+  <body>
+    <h1>INSERTAR PRODUCTOS</h1>
+    <form action="Controlador/insertar.php" method="post">
+      <table>
+        <tr>
+          <td>Nombre:</td>
+          <td><input type="text" name="nombre" /></td>
+        </tr>
+        <tr>
+          <td>Descripcion:</td>
+          <td><textarea name="descripcion" cols="30" rows="10"></textarea></td>
+        </tr>
+        <tr>
+          <td>Categoria:</td>
+          <td><input type="text" name="categoria" /></td>
+        </tr>
+        <tr>
+          <td>Precio:</td>
+          <td><input type="text" name="precio" /></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="submit" value="Registrar Producto" /></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
