@@ -42,12 +42,47 @@ class Consultas
         }
     }
 
-    public function getProductos() {
+    public function getProductos()
+    {
         $rows = null;
         $modelo = new Conexion();
         $conexion = $modelo->get_conexion();
         $query = "SELECT * FROM productos";
         $statement = $conexion->prepare($query);
+        $statement->execute();
+
+        while ($result = $statement->fetch()) {
+            $rows[] = $result;
+        }
+
+        return $rows;
+    }
+
+    public function eliminarProducto($id_producto)
+    {
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $query = "DELETE FROM productos WHERE id_producto = :id_producto";
+        $statement = $conexion->prepare($query);
+        $statement->bindParam(":id_producto", $id_producto);
+
+        if (!$statement) {
+            return "Error al eliminar producto";
+        } else {
+            $statement->execute();
+            return "Producto eliminado correctamente";
+        }
+    }
+
+    public function buscarProductos($busqueda)
+    {
+        $rows = null;
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $nombre = "%" . $busqueda . "%";
+        $query = "SELECT * FROM productos WHERE nombre LIKE :nombre";
+        $statement = $conexion->prepare($query);
+        $statement->bindParam(":nombre", $nombre);
         $statement->execute();
 
         while ($result = $statement->fetch()) {

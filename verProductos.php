@@ -13,7 +13,19 @@ require_once('./Controlador/cargar.php');
 
 <body>
     <h1>MIS PRODUCTOS</h1>
-    <?php cargar(); ?>
+    <div>
+        <form method="get">
+            <input type="text" name="buscar">
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+    <?php
+    if (isset($_GET['buscar'])) {
+        buscar($_GET['buscar']);
+    } else {
+        cargar();
+    }
+    ?>
 
     <div>
         <a href="./insertar.html">Agregar un nuevo producto</a>
