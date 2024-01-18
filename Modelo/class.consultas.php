@@ -91,4 +91,38 @@ class Consultas
 
         return $rows;
     }
+
+    public function cargarProducto($id_producto)
+    {
+        $rows = null;
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $query = "SELECT * FROM productos WHERE id_producto = :id_producto";
+        $statement = $conexion->prepare($query);
+        $statement->bindParam(":id_producto", $id_producto);
+        $statement->execute();
+
+        while ($result = $statement->fetch()) {
+            $rows[] = $result;
+        }
+
+        return $rows;
+    }
+
+    public function modificarProducto($field, $valor, $id_producto)
+    {
+        $modelo = new Conexion();
+        $conexion = $modelo->get_conexion();
+        $query = "UPDATE productos SET $field = :valor WHERE id_producto = :id_producto";
+        $statement = $conexion->prepare($query);
+        $statement->bindParam(":valor", $valor);
+        $statement->bindParam(":id_producto", $id_producto);
+
+        if (!$statement) {
+            return "Error al modificar el producto";
+        } else {
+            $statement->execute();
+            return "Producto modificado correctamente";
+        }
+    }
 }
