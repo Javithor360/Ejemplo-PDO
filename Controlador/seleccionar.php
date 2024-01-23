@@ -9,7 +9,7 @@ function seleccionar()
 
         foreach ($rows as $row) {
             echo '
-                <form action="" method="post">
+                <form action="./Controlador/modificar.php" method="post">
                     <table>
                         <tr>
                             <td>Nombre:</td>
@@ -26,6 +26,10 @@ function seleccionar()
                         <tr>
                             <td>Precio:</td>
                             <td><input type="text" name="precio" value="' . $row['precio'] . '" /></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><input type="hidden" name="id_producto" value="' . $id_producto . '" /></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>

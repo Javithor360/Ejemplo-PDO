@@ -20,7 +20,7 @@ function cargar()
         echo "<td>" . $row['descripcion'] . "</td>";
         echo "<td>" . $row['categoria'] . "</td>";
         echo "<td>" . $row['precio'] . "</td>";
-        echo "<td><a href='./modificar.php?id_producto=" . $row['id_producto'] . "'>Modificar</td>";
+        echo "<td><a href='./editar.php?id_producto=" . $row['id_producto'] . "'>Modificar</td>";
         echo "<td><a href='./Controlador/eliminar.php?id_producto=" . $row['id_producto'] . "'>Eliminar</td>";
         echo "</tr>";
     }
@@ -48,7 +48,7 @@ function buscar($busqueda)
             echo "<td>" . $row['descripcion'] . "</td>";
             echo "<td>" . $row['categoria'] . "</td>";
             echo "<td>" . $row['precio'] . "</td>";
-            echo "<td><a href='./modificar.php?id_producto=" . $row['id_producto'] . "'>Modificar</td>";
+            echo "<td><a href='./editar.php?id_producto=" . $row['id_producto'] . "'>Modificar</td>";
             echo "<td><a href='./Controlador/eliminar.php?id_producto=" . $row['id_producto'] . "'>Eliminar</td>";
             echo "</tr>";
         }
